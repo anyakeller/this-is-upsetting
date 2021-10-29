@@ -75,6 +75,38 @@ class PpControls extends React.Component {
     ystepsize = 0.25 * Math.ceil(4 * ((ymax - ymin) / 20));
     var x;
     x = 0.5 * Math.ceil(2 * (xmin + xstepsize * 1.0));
+    while (x <= xmax - 0.2) {
+      if (x != 0) {
+        context.moveTo(x * xscale + x0, 0);
+        context.lineTo(x * xscale + x0, canvas.height);
+      }
+      xCtx.fillText(x, x * xscale + x0, 1);
+      x = x + xstepsize;
+    }
+    var y;
+    y = 0.5 * Math.ceil(2 * (ymin + ystepsize * 1.0));
+    while (y <= ymax - 0.2) {
+      if (y != 0) {
+        context.moveTo(0, y0 - y * yscale);
+        context.lineTo(canvas.width, y0 - y * yscale);
+      }
+      yCtx.fillText(y, yAxis.width - 1, y0 - y * yscale);
+      y = y + ystepsize;
+    }
+    context.stroke();
+
+    // Draw the x-axis, y-axis
+    context.strokeStyle = "blue"; // blue lines
+    context.beginPath();
+    context.moveTo(x0, 0);
+    context.lineTo(x0, canvas.height);
+    context.moveTo(0, y0);
+    context.lineTo(canvas.width, y0);
+    context.stroke();
+
+    context.strokeStyle="black"; // black lines
+    context.beginPath();
+    //asdfads
     console.log("iiiiing");
   };
 
